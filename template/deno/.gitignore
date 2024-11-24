@@ -1,0 +1,7 @@
+# Nix & NixOS
+.direnv/
+.editorconfig
+.pre-commit-config.yaml
+result
+result-*
+stylelint.config.mjs

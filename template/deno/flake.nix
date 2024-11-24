@@ -46,8 +46,6 @@
           check-json.enable = true;
           # Github Actions
           actionlint.enable = true;
-          # Markdown
-          typos.enable = true;
           # Generic - .editorconfig
           editorconfig-checker.enable = true;
           check-toml.enable = true;

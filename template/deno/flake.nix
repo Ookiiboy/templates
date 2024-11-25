@@ -3,6 +3,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     systems.url = "github:nix-systems/default";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+    ignoreBoy.url = "github:Ookiiboy/ignoreBoy";
     # Non-flake
     stylelint-config-recommended.url = "github:stylelint/stylelint-config-recommended";
     stylelint-config-recommended.flake = false;
@@ -17,6 +18,7 @@
     pre-commit-hooks,
     stylelint-config-recommended,
     editorconfig,
+    ignoreBoy,
     ...
   }: let
     forAllSystems = nixpkgs.lib.genAttrs (import systems);
@@ -64,6 +66,15 @@
     });
     devShells = forAllSystems (system: let
       pkgs = import nixpkgs {inherit system;};
+      ignoreSettings = {
+        ignores = ["Node"];
+        # Anything custom you might want in your .gitignore you can place in extraConfig.
+        extraConfig = ''
+          .pre-commit-config.yaml
+          stylelint.config.mjs
+          .editorconfig
+        '';
+      };
     in {
       default = pkgs.mkShell {
         name = "development";
@@ -71,6 +82,7 @@
           ln -sf ${stylelint-config-recommended}/index.js ./stylelint.config.mjs
           ln -sf ${editorconfig}/.editorconfig ./.editorconfig
           ${self.checks.${system}.pre-commit-check.shellHook}
+          ${ignoreBoy.lib.${system}.gitignore ignoreSettings}
         '';
         ENV = "dev";
         buildInputs = with pkgs;

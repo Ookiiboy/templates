@@ -24,9 +24,7 @@
       pkgs = import nixpkgs {inherit system;};
     in
       pkgs.alejandra);
-    checks = forAllSystems (system: let
-      pkgs = import nixpkgs {inherit system;};
-    in {
+    checks = forAllSystems (system: {
       pre-commit-check = pre-commit-hooks.lib.${system}.run {
         src = ./.;
         hooks = {

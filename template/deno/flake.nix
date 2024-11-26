@@ -5,8 +5,6 @@
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     ignoreBoy.url = "github:Ookiiboy/ignoreBoy";
     # Non-flake
-    stylelint-config-recommended.url = "github:stylelint/stylelint-config-recommended";
-    stylelint-config-recommended.flake = false;
     editorconfig.url = "github:Ookiiboy/editor-config/";
     editorconfig.flake = false;
   };
@@ -16,7 +14,6 @@
     systems,
     nixpkgs,
     pre-commit-hooks,
-    stylelint-config-recommended,
     editorconfig,
     ignoreBoy,
     ...
@@ -41,26 +38,11 @@
           # Deno
           denofmt.enable = true;
           denolint.enable = true;
-          # Shell Scripts
-          shellcheck.enable = true;
-          beautysh.enable = true;
           # JSON
           check-json.enable = true;
-          # Github Actions
-          actionlint.enable = true;
           # Generic - .editorconfig
           editorconfig-checker.enable = true;
           check-toml.enable = true;
-          # CSS - .stylelint.json
-          stylelint = {
-            enable = true;
-            name = "Stylelint";
-            entry = "${pkgs.stylelint}/bin/stylelint --fix";
-            files = "\\.(css)$";
-            types = ["text" "css"];
-            language = "system";
-            pass_filenames = true;
-          };
         };
       };
     });
@@ -71,7 +53,6 @@
         # Anything custom you might want in your .gitignore you can place in extraConfig.
         extraConfig = ''
           .pre-commit-config.yaml
-          stylelint.config.mjs
           .editorconfig
         '';
       };
@@ -79,7 +60,6 @@
       default = pkgs.mkShell {
         name = "development";
         shellHook = ''
-          ln -sf ${stylelint-config-recommended}/index.js ./stylelint.config.mjs
           ln -sf ${editorconfig}/.editorconfig ./.editorconfig
           ${self.checks.${system}.pre-commit-check.shellHook}
           ${ignoreBoy.lib.${system}.gitignore ignoreSettings}

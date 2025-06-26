@@ -33,7 +33,7 @@ Some things need to be installed, right? Right.
 ### Getting Started
 In a new project directory run one of the nix flake template command like so:
 
-#### Generic Started
+#### Generic Starter
 ```shell
 nix flake init -t github:Ookiiboy/templates
 ```

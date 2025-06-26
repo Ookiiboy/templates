@@ -44,7 +44,7 @@
       pkgs = import nixpkgs {inherit system;};
       ignoreSettings = {
         github.languages = [];
-        # gitignoreio.languages = [""];
+        # gitignoreio.languages = [];
         # gitignoreio.hash = "";
         # Anything custom you might want in your .gitignore you can place in extraConfig.
         extraConfig = ''

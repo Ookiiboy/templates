@@ -43,7 +43,7 @@
     devShells = forAllSystems (system: let
       pkgs = import nixpkgs {inherit system;};
       ignoreSettings = {
-        github.languages = [""];
+        github.languages = [];
         # gitignoreio.languages = [""];
         # gitignoreio.hash = "";
         # Anything custom you might want in your .gitignore you can place in extraConfig.

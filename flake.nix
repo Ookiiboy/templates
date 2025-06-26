@@ -3,11 +3,13 @@
 
   outputs = {self}: {
     templates = {
-      deno = {
-        path = ./template/deno;
-        description = "Deno 2 Flake + Tooling";
-      };
+      # Generic
+      default.path = ./template/default;
+      default.description = "Generic Development Flake + Tooling";
+      # Deno
+      deno.path = ./template/deno;
+      deno.description = "Deno 2 Flake + Tooling";
     };
-    defaultTemplate = self.templates.deno;
+    defaultTemplate = self.templates.default;
   };
 }

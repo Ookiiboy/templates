@@ -1,5 +1,5 @@
 {
-  description = "Development Templates";
+  description = "大きいBOY's Development Templates";
 
   outputs = {self}: {
     templates = {

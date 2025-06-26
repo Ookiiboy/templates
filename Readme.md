@@ -6,6 +6,7 @@
 These are the 大きいBOY group's `nix` development shell templates. The intent is to spend less time setting up development environments for new projects.
 
 ### Features Include
+- Inits your git repo if not already.
 - Automatic setup of Pre-Commit Hooks.
 - Automatic, community derrived, sane defaults for your repo's `.gitignore`.
 - Pre-defined .editorconfig file.
@@ -25,10 +26,12 @@ These are the 大きいBOY group's `nix` development shell templates. The intent
 
 ### Before you use this
 Some things need to be installed, right? Right.
-- Make sure `nix` is installed
-- Make sure flakes are enabled
-- Make sure `direnv` is setup (optional, but reccomended)
-- run `git init` on the directory.
+Make sure:
+
+- `git` is installed
+- `nix` is installed
+- nix flakes are enabled
+- `direnv` is setup (optional, but reccomended)
 
 ### Getting Started
 In a new project directory run one of the nix flake template command like so:
@@ -48,20 +51,15 @@ nix flake init -t github:Ookiiboy/templates#deno
 
 ### Starting the development shell
 
-Remember to, ad least, add your files to your git tree:
-```shell
-git add .
-```
-
 `direnv` should pick up that there is a `.envrc` file. To let it run:
 ```shell
 direnv allow
 ```
-If you dont' want to use `direnv` you could start the shell by using the `nix` command:
+If you dont' want to use `direnv` you could start the shell by using the `nix` command, not reccomended:
 ```shell
 nix develop
 ```
-On first run (and any time you save the `flake.nix` file), and the shell reloads, the development enviroment will link (or copy in the case of `.gitignore`) files automatically. These don't need to be commited, except for gitignore. Side note: Git won't actually let you make a link to a .gitignore. Apparently at some point it was allowed. 
+On first run (and any time you save the `flake.nix` file), and when the shell reloads, it will check for a git project, and then the development enviroment will link (or copy in the case of `.gitignore`) files automatically. These don't need to be commited, except for gitignore. Side note: Git won't actually let you make a link to a .gitignore. Apparently at some point it was allowed. 
 
 You should now be dropped into your environment. You can test this:
 ```shell

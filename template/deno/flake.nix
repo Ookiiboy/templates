@@ -36,8 +36,6 @@
           # Deno
           denofmt.enable = true;
           denolint.enable = true;
-          # JSON
-          check-json.enable = true;
           # Generic - .editorconfig
           editorconfig-checker.enable = true;
           check-toml.enable = true;
@@ -60,6 +58,7 @@
       default = pkgs.mkShell {
         name = "development";
         shellHook = ''
+          if [ ! -d ".git" ]; then git init; fi
           ln -sf ${editorconfig}/.editorconfig ./.editorconfig
           ${self.checks.${system}.pre-commit-check.shellHook}
           ${ignoreBoy.lib.${system}.gitignore ignoreSettings}

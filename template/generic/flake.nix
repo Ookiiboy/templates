@@ -58,6 +58,7 @@
         ENV = "dev";
         name = "Development_Shell";
         shellHook = ''
+          if [ ! -d ".git" ]; then git init; fi
           ln -sf ${editorconfig}/.editorconfig ./.editorconfig
           ${self.checks.${system}.pre-commit-check.shellHook}
           ${ignoreBoy.lib.${system}.gitignore ignoreSettings}

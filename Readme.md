@@ -68,3 +68,4 @@ You should now be dropped into your environment. You can test this:
 echo $ENV
 # dev
 ```
+Happy hacking, ookiiBoy.

@@ -48,8 +48,8 @@
       pkgs = import nixpkgs {inherit system;};
       ignoreSettings = {
         github.languages = ["Node"];
-        gitignoreio.languages = ["deno"];
-        gitignoreio.hash = "";
+        # gitignoreio.languages = ["deno"];
+        # gitignoreio.hash = "";
         # Anything custom you might want in your .gitignore you can place in extraConfig.
         extraConfig = ''
           .pre-commit-config.yaml

@@ -4,7 +4,7 @@
   outputs = {self}: {
     templates = {
       # Generic
-      generic.path = ./template/default;
+      generic.path = ./template/generic;
       generic.description = "Generic Development Flake + Tooling";
       # Deno
       deno.path = ./template/deno;

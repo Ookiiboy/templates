@@ -35,7 +35,7 @@ In a new project directory run one of the nix flake template command like so:
 
 #### Generic Started
 ```shell
-nix flake init -t github:Ookiiboy/templates#default
+nix flake init -t github:Ookiiboy/templates
 ```
 Feel free to edit the `flake.nix` file's attribute path `outputs.devShells.<archtecture>.default`'s `buildInputs` array with your needed packages.
 

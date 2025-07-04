@@ -8,7 +8,10 @@
       generic.description = "Generic Development Flake + Tooling";
       # Deno
       deno.path = ./template/deno;
-      deno.description = "Deno 2 Flake + Tooling";
+      deno.description = "Deno 2 Development Flake + Tooling";
+      # Pico8 - Fantasy Console
+      pico8.path = ./template/pico8;
+      pico8.description = "Pico8 Development Flake + Tooling";
     };
     defaultTemplate = self.templates.generic;
   };

@@ -45,6 +45,9 @@ You may also look at `outputs.devShells.<archtecture>.ignoreSettings.github.lang
 ```shell
 nix flake init -t github:Ookiiboy/templates#deno
 ```
+#### Pico8
+```shell
+nix flake init -t github:Ookiiboy/templates#pico8
 
 ### Starting the development shell
 

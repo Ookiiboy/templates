@@ -113,7 +113,7 @@
 
         buildInputs =
           [
-            self.packages.${system}.pico8 # Pico
+            self.packages.${system}.pico8 # Pico8
           ]
           ++ self.checks.${system}.pre-commit-check.enabledPackages;
       };

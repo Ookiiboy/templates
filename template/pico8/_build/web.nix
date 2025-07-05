@@ -5,12 +5,11 @@
   system,
 }:
 pkgs.stdenv.mkDerivation rec {
-  pname = meta.pname;
-  version = meta.version;
+  inherit meta;
   src = ../.;
   buildInputs = [self.packages.${system}.pico8];
   buildPhase = ''
-    pico8 -x ./src/cart/main.p8 -export ${pname}-${version}.html
+    pico8 -x ./src/cart/main.p8 -export ${meta.pname}-${meta.version}.html
   '';
   installPhase = ''
     mkdir -p $out

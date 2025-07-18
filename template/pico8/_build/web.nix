@@ -6,6 +6,7 @@
 }:
 pkgs.stdenv.mkDerivation rec {
   inherit meta;
+  name = meta.name;
   src = ../.;
   buildInputs = [self.packages.${system}.pico8];
   buildPhase = ''

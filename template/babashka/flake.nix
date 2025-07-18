@@ -33,6 +33,9 @@
           deadnix.enable = true;
           statix.enable = true;
           flake-checker.enable = true;
+          # Clojure
+          cljfmt.enable = true;
+          # zprint.enable = true;
           # JSON
           check-json.enable = true;
           # Generic - .editorconfig
@@ -66,7 +69,7 @@
 
         buildInputs = with pkgs;
           [
-            # Your development dependencies here.
+            babashka
           ]
           ++ self.checks.${system}.pre-commit-check.enabledPackages;
       };

@@ -19,9 +19,10 @@
     ...
   }: let
     forAllSystems = nixpkgs.lib.genAttrs (import systems);
-    meta = {
+    meta = rec {
       pname = "game";
       version = "0.0.0";
+      name = pname;
     };
   in {
     packages =
@@ -71,7 +72,7 @@
           statix.enable = true;
           flake-checker.enable = true;
           # Lua
-          luacheck.enable = true;
+          # TODO: Find a Pico8 Lua formatter/linter
           # Generic - .editorconfig
           editorconfig-checker.enable = true;
         };

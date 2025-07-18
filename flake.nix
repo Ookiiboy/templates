@@ -6,6 +6,9 @@
       # Generic
       generic.path = ./template/generic;
       generic.description = "Generic Development Flake + Tooling";
+      # Clojure - Babashka
+      babashka.path = ./template/babashka;
+      babashka.description = "Babashka Development Flake + Tooling";
       # Deno
       deno.path = ./template/deno;
       deno.description = "Deno 2 Development Flake + Tooling";

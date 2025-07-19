@@ -4,6 +4,8 @@
     systems.url = "github:nix-systems/default";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     ignoreBoy.url = "github:Ookiiboy/ignoreBoy";
+    # Babashka Related
+    wbba.url = "github:sohalt/write-babashka-application";
     # Non-flake
     editorconfig.url = "github:Ookiiboy/editor-config/";
     editorconfig.flake = false;
@@ -16,14 +18,28 @@
     pre-commit-hooks,
     editorconfig,
     ignoreBoy,
+    wbba,
     ...
   }: let
     forAllSystems = nixpkgs.lib.genAttrs (import systems);
+    meta = rec {
+      pname = "script";
+      version = "0.0.0";
+      name = pname;
+    };
   in {
     formatter = forAllSystems (system: let
       pkgs = import nixpkgs {inherit system;};
     in
       pkgs.alejandra);
+    packages = forAllSystems (system: let
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [wbba.overlays.default];
+      };
+    in {
+      default = pkgs.callPackage ./_build {inherit meta pkgs;};
+    });
     checks = forAllSystems (system: {
       pre-commit-check = pre-commit-hooks.lib.${system}.run {
         src = ./.;

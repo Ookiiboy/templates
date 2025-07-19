@@ -44,6 +44,11 @@ Feel free to edit the `flake.nix` file's attribute path `outputs.devShells.<arch
 
 You may also look at `outputs.devShells.<archtecture>.ignoreSettings.github.languages` array and add the language(s) you're going to be working with. For more information see the [ignoreBoy project](https://github.com/Ookiiboy/ignoreBoy/blob/main/README.md)'s fairly spare documentation.
 
+#### Clojure/Babashka
+```shell
+nix flake init -t github:Ookiiboy/templates#babashka
+```
+
 #### Deno
 ```shell
 nix flake init -t github:Ookiiboy/templates#deno

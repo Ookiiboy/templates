@@ -1,5 +1,5 @@
 {pkgs}:
-pkgs.buildFHSEnv {
+pkgs.buildFHSEnv rec {
   name = "pico8";
   pico8Src = pkgs.fetchzip {
     url = "https://www.lexaloffle.com/dl/7tiann/pico-8_0.2.6b_raspi.zip";
@@ -24,4 +24,5 @@ pkgs.buildFHSEnv {
     udev
     wget
   ]);
+  runScript = "${pico8Src}/pico8 -windowed 1 -home ./ -root_path ./src/cart";
 }

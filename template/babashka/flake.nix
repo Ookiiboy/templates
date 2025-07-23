@@ -62,13 +62,16 @@
     devShells = forAllSystems (system: let
       pkgs = import nixpkgs {inherit system;};
       ignoreSettings = {
-        github.languages = [];
+        github.languages = ["Clojure"];
         # gitignoreio.languages = [];
         # gitignoreio.hash = "";
         # Anything custom you might want in your .gitignore you can place in extraConfig.
         extraConfig = ''
           .pre-commit-config.yaml
           .editorconfig
+          .calva
+          .clj-kondo
+          .lsp
         '';
       };
     in {

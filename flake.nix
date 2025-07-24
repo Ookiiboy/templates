@@ -15,6 +15,9 @@
       # Pico8 - Fantasy Console
       pico8.path = ./template/pico8;
       pico8.description = "Pico8 Development Flake + Tooling";
+      # Bash - Shell
+      bash.path = ./template/bash;
+      bash.description = "Bash Development Flake + Tooling";
     };
     defaultTemplate = self.templates.generic;
   };

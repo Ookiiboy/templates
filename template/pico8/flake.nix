@@ -23,6 +23,9 @@
       pname = "game";
       version = "0.0.0";
       name = pname;
+      shrinkoOptions = [
+        "--minify-safe-only"
+      ];
     };
   in {
     packages =
@@ -35,6 +38,7 @@
         web = pkgs.callPackage ./_build/web.nix {inherit meta self pkgs system;};
         cart = pkgs.callPackage ./_build/cart.nix {inherit meta self pkgs system;};
         bin = pkgs.callPackage ./_build/bin.nix {inherit meta self pkgs system;};
+        shrinko8 = pkgs.callPackage ./_pico8/shrinko8.nix {inherit pkgs;};
       }))
       # Pico for different archs.
       rec {
@@ -115,6 +119,8 @@
         buildInputs =
           [
             self.packages.${system}.pico8 # Pico8
+            self.packages.${system}.shrinko8 # Shrinko8
+            pkgs.python313Packages.pillow # Dependency for Shrinko8 - outside of build.
           ]
           ++ self.checks.${system}.pre-commit-check.enabledPackages;
       };

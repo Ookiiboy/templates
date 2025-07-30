@@ -18,6 +18,6 @@ pkgs.stdenv.mkDerivation rec {
   '';
   installPhase = ''
     mkdir -p $out
-    cp -r ./src *.bin/* $out
+    cp -r *.bin/* $out
   '';
 }
